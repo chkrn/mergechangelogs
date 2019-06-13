@@ -9,9 +9,17 @@
 - Fixed work with ZZ > 1
 
 ## 2019-02-08
-- Second project fix
-- Second project second fix
-- Second project new feature
+- Some new stuff in first project:
+    - One
+        - one dot one
+        - one dot two
+        - one dot three
+    - Two
+        - two dot one
+        - two dot two
+        - two dot three
+    
+- Some fix in first project (string before contain only spaces)
 ## 2017-01-18
 
 
