@@ -4,6 +4,7 @@
 ## 1999-02-18
 
 - Fix with header without spaces
+- Fix with header with spaces
 
 ## 2019-02-18
 
@@ -31,9 +32,6 @@
 
 ## 2019-02-08
 
-- Second project fix
-- Second project second fix
-- Second project new feature
 - Some new stuff in first project:
     - One
         - one dot one
@@ -44,6 +42,9 @@
         - two dot two
         - two dot three
 - Some fix in first project (string before contain only spaces)
+- Second project fix
+- Second project second fix
+- Second project new feature
 
 ## 2018-02-07
 
