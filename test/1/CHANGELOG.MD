@@ -1,3 +1,5 @@
+## 1999-02-18
+- Fix with header without spaces
 ## 2019-02-18
 - Realized control of XX
 - Fixed work with more than 80 YY
