@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 
-def test():
-	linesWithoutChapter = []
+def merge_changelogs():
+	lines_without_chapter = []
 	chapters = {}
 
 	files = ("test/1/CHANGELOG.MD", "test/2/CHANGELOG.md")
 	for i in files:
-		chapter = linesWithoutChapter
+		chapter = lines_without_chapter
 		with open(i) as file:
 			line = file.readline()
 			while line:
@@ -22,7 +22,7 @@ def test():
 				line = file.readline()
 
 	with open("CHANGELOG.md", 'w') as file:
-		for line in linesWithoutChapter:
+		for line in lines_without_chapter:
 			file.write(line)
 		for chapter in reversed(sorted(chapters.keys())):
 			file.write(chapter)
@@ -31,5 +31,5 @@ def test():
 				file.write(line)
 
 if __name__ == "__main__":
-	test()
+	merge_changelogs()
 
