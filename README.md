@@ -15,7 +15,8 @@ For example, we have Changelog files:
 - File 2, item 2
 ## 2019-01-02
 - File 2, item 1
-```Result will look like:
+```
+Result will look like:
 ```markdown
 - File 1, item 3
 - File 2, item 3

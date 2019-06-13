@@ -52,7 +52,7 @@ if __name__ == '__main__':
 			with open(file_name) as file:
 				output.write(file.read())
 			output.write('```')
-		output.write('Result will look like:\n```markdown\n')
+		output.write('\nResult will look like:\n```markdown\n')
 
 	merge_changelogs(output, input_files_paths)
 
