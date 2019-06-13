@@ -48,13 +48,13 @@ if __name__ == '__main__':
 	if readme_mode:
 		output.write('# mergechangelogs.py\nFor example, we have Changelog files:')
 		for file_name in input_files_paths:
-			output.write('\n* ' + file_name + ':\n```')
+			output.write('\n* ' + file_name + ':\n```markdown\n')
 			with open(file_name) as file:
 				output.write(file.read())
-			output.write('```\n')
-		output.write('Result will look like:\n```')
+			output.write('```')
+		output.write('Result will look like:\n```markdown\n')
 
 	merge_changelogs(output, input_files_paths)
 
 	if readme_mode:
-		output.write('```\n_File was generated with:\n```' + " ".join(sys.argv) + '```')
+		output.write('```\n_File was generated with:_\n```' + " ".join(sys.argv) + '```')
