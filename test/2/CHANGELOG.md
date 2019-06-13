@@ -1,3 +1,4 @@
+- First line in second project
 ## 1999-02-18  
 - Fix with header with spaces
 ## 2019-02-11

@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
 
 def test():
+	linesWithoutChapter = []
 	chapters = {}
+
 	files = ("test/1/CHANGELOG.MD", "test/2/CHANGELOG.md")
 	for i in files:
+		chapter = linesWithoutChapter
 		with open(i) as file:
 			line = file.readline()
 			while line:
@@ -19,6 +22,8 @@ def test():
 				line = file.readline()
 
 	with open("CHANGELOG.md", 'w') as file:
+		for line in linesWithoutChapter:
+			file.write(line)
 		for chapter in reversed(sorted(chapters.keys())):
 			file.write(chapter)
 			file.write('\n')

@@ -1,3 +1,6 @@
+- One line without date
+
+- Another line without date
 ## 1999-02-18
 - Fix with header without spaces
 ## 2019-02-18
