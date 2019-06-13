@@ -18,10 +18,12 @@ def test():
 					
 				line = file.readline()
 
-	for chapter in sorted(chapters.keys()):
-		print(">> " + chapter)
-		for line in chapters[chapter]:
-			print("> " + line, end = "")
+	with open("CHANGELOG.md", 'w') as file:
+		for chapter in reversed(sorted(chapters.keys())):
+			file.write(chapter)
+			file.write('\n')
+			for line in chapters[chapter]:
+				file.write(line)
 
 if __name__ == "__main__":
 	test()
