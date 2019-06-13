@@ -1,10 +1,6 @@
 - One line without date
 - Another line without date
-
-## 1999-02-18
-
-- Fix with header without spaces
-- Fix with header with spaces
+- First line in second project
 
 ## 2019-02-18
 
@@ -57,3 +53,7 @@
 
 - Some old fix
 - Very old fix
+
+## 1999-02-18
+- Fix with header without spaces
+- Fix with header with spaces
