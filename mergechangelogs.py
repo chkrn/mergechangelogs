@@ -3,32 +3,31 @@
 import sys
 
 def merge_changelogs(output, input_files_paths):
-	lines_without_chapter = []
+	content_without_chapter = []
 	chapters = {}
 
 	for file_name in input_files_paths:
-		chapter = lines_without_chapter
+		chapter_content = content_without_chapter
 		with open(file_name) as file:
 			line = file.readline()
 			while line:
 				if line.startswith('##'):
 					line = line.rstrip()
-					chapter = chapters.get(line)
-					if not chapter:
-						chapter = []
-						chapters[line] = chapter
+					chapter_content = chapters.get(line)
+					if not chapter_content:
+						chapters[line] = chapter_content = []
 				elif not line.isspace():
-					chapter.append(line)
+					chapter_content.append(line)
 					
 				line = file.readline()
 
-	for line in lines_without_chapter:
+	for line in content_without_chapter:
 		output.write(line)
-	for chapter in reversed(sorted(chapters.keys())):
+	for chapter_content in reversed(sorted(chapters.keys())):
 		output.write('\n')
-		output.write(chapter)
+		output.write(chapter_content)
 		output.write('\n\n')
-		for line in chapters[chapter]:
+		for line in chapters[chapter_content]:
 			output.write(line)
 
 if __name__ == '__main__':
