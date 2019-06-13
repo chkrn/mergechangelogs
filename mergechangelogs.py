@@ -8,6 +8,7 @@ def test():
 			line = file.readline()
 			while line:
 				if line.startswith("##"):
+					line = line.rstrip()
 					chapter = chapters.get(line)
 					if not chapter:
 						chapter = []
@@ -18,7 +19,7 @@ def test():
 				line = file.readline()
 
 	for chapter in sorted(chapters.keys()):
-		print(">> " + chapter, end = "")
+		print(">> " + chapter)
 		for line in chapters[chapter]:
 			print("> " + line, end = "")
 
