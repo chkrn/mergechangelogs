@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
 
-def merge_changelogs():
+def merge_changelogs(output_file_path, *input_files_paths):
 	lines_without_chapter = []
 	chapters = {}
 
-	files = ("test/1/CHANGELOG.MD", "test/2/CHANGELOG.md")
-	for file_name in files:
+	for file_name in input_files_paths:
 		chapter = lines_without_chapter
 		with open(file_name) as file:
 			line = file.readline()
@@ -21,7 +20,7 @@ def merge_changelogs():
 					
 				line = file.readline()
 
-	with open("CHANGELOG.md", 'w') as file:
+	with open(output_file_path, 'w') as file:
 		for line in lines_without_chapter:
 			file.write(line)
 		for chapter in reversed(sorted(chapters.keys())):
@@ -32,5 +31,5 @@ def merge_changelogs():
 				file.write(line)
 
 if __name__ == "__main__":
-	merge_changelogs()
+	merge_changelogs("CHANGELOG.md", "test/1/CHANGELOG.MD", "test/2/CHANGELOG.md")
 
