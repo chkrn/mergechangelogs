@@ -14,7 +14,8 @@
         - two dot one
         - two dot two
         - two dot three
-- Some fix in first project:
+    
+- Some fix in first project (string before contain only spaces)
 
 ## 2018-02-07
 

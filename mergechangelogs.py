@@ -5,9 +5,9 @@ def merge_changelogs():
 	chapters = {}
 
 	files = ("test/1/CHANGELOG.MD", "test/2/CHANGELOG.md")
-	for i in files:
+	for file_name in files:
 		chapter = lines_without_chapter
-		with open(i) as file:
+		with open(file_name) as file:
 			line = file.readline()
 			while line:
 				if line.startswith("##"):
@@ -16,7 +16,7 @@ def merge_changelogs():
 					if not chapter:
 						chapter = []
 						chapters[line] = chapter
-				else:
+				elif not line.isspace():
 					chapter.append(line)
 					
 				line = file.readline()
@@ -25,8 +25,9 @@ def merge_changelogs():
 		for line in lines_without_chapter:
 			file.write(line)
 		for chapter in reversed(sorted(chapters.keys())):
-			file.write(chapter)
 			file.write('\n')
+			file.write(chapter)
+			file.write('\n\n')
 			for line in chapters[chapter]:
 				file.write(line)
 
