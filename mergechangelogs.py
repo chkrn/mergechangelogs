@@ -24,9 +24,7 @@ def merge_changelogs(output, input_files_paths):
 	for line in content_without_chapter:
 		output.write(line)
 	for chapter_content in reversed(sorted(chapters.keys())):
-		output.write('\n')
-		output.write(chapter_content)
-		output.write('\n\n')
+		output.write('\n{}\n\n'.format(chapter_content))
 		for line in chapters[chapter_content]:
 			output.write(line)
 
@@ -46,8 +44,8 @@ if __name__ == '__main__':
 
 	if readme_mode:
 		output.write('# mergechangelogs.py\nFor example, we have Changelog files:')
-		for file_name in input_files_paths:
-			output.write('\n* ' + file_name + ':\n```markdown\n')
+		for n, file_name in enumerate(input_files_paths):
+			output.write('\n* File #{} ({}):\n```markdown\n'.format(n + 1, file_name))
 			with open(file_name) as file:
 				output.write(file.read())
 			output.write('```')
@@ -56,4 +54,4 @@ if __name__ == '__main__':
 	merge_changelogs(output, input_files_paths)
 
 	if readme_mode:
-		output.write('```\n_File was generated with:_\n```' + " ".join(sys.argv) + '```')
+		output.write('```\n_File was generated with:_\n```{}```'.format(" ".join(sys.argv)))

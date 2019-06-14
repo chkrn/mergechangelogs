@@ -1,6 +1,6 @@
 # mergechangelogs.py
 For example, we have Changelog files:
-* examples/Changelog_1.md:
+* File #1 (examples/Changelog_1.md):
 ```markdown
 - File 1, item 3
 ## 2019-01-02
@@ -8,7 +8,7 @@ For example, we have Changelog files:
 ## 2019-01-01
 - File 1, item 1
 ```
-* examples/Changelog_2.md:
+* File #2 (examples/Changelog_2.md):
 ```markdown
 - File 2, item 3
 ## 2019-01-03
