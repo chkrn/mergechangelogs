@@ -10,8 +10,7 @@ def merge_changelogs(output, input_files_paths):
 	for file_name in input_files_paths:
 		chapter_content = content_without_chapter
 		with open(file_name) as file:
-			line = file.readline()
-			while line:
+			for line in file:
 				if line.startswith('##'):
 					line = line.rstrip()
 					chapter_content = chapters.get(line)
@@ -19,8 +18,6 @@ def merge_changelogs(output, input_files_paths):
 						chapters[line] = chapter_content = []
 				elif not line.isspace():
 					chapter_content.append(line)
-					
-				line = file.readline()
 
 	for line in content_without_chapter:
 		output.write(line)
