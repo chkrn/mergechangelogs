@@ -55,5 +55,6 @@
 - Very old fix
 
 ## 1999-02-18
+
 - Fix with header without spaces
 - Fix with header with spaces
