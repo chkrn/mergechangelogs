@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import argparse
 import sys
 
 def merge_changelogs(output, input_files_paths):
@@ -31,27 +32,21 @@ def merge_changelogs(output, input_files_paths):
 if __name__ == '__main__':
 	output = sys.stdout
 
-	if len(sys.argv) > 1 and sys.argv[1] == '--readme':
-		input_files_paths = sys.argv[2:]
-		readme_mode = True
-	else:
-		input_files_paths = sys.argv[1:]
-		readme_mode = False
+	parser = argparse.ArgumentParser()
+	parser.add_argument('-r', '--readme', action='store_true', help='generate readme file')
+	parser.add_argument('input_files_paths', nargs='+')
+	args = parser.parse_args()
 
-	if len(input_files_paths) == 0:
-		print('Usage:\n', sys.argv[0], '[--readme] input_files_paths', file=sys.stderr)
-		sys.exit(2)
-
-	if readme_mode:
+	if args.readme:
 		output.write('# mergechangelogs.py\nFor example, we have Changelog files:')
-		for n, file_name in enumerate(input_files_paths):
+		for n, file_name in enumerate(args.input_files_paths):
 			output.write('\n* File #{} ({}):\n```markdown\n'.format(n + 1, file_name))
 			with open(file_name) as file:
 				output.write(file.read())
 			output.write('```')
 		output.write('\nResult will look like:\n```markdown\n')
 
-	merge_changelogs(output, input_files_paths)
+	merge_changelogs(output, args.input_files_paths)
 
-	if readme_mode:
+	if args.readme:
 		output.write('```\n_File was generated with:_\n```{}```'.format(" ".join(sys.argv)))
