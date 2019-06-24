@@ -25,17 +25,17 @@ class TestMerge(unittest.TestCase):
 
 
 	def test_fail_merge(self):
-		diff = self.run_with_files(['test/Changelog_{}.md'.format(n + 1) for n in range(0, 2)])
+		diff = self.run_with_files(['test/Changelog_{}.md'.format(n + 1) for n in range(2)])
 		self.assertTrue(diff)
 
 	def test_succesfully_merge(self):
-		diff = self.run_with_files(['test/Changelog_{}.md'.format(n + 1) for n in range(0, 3)])
+		diff = self.run_with_files(['test/Changelog_{}.md'.format(n + 1) for n in range(3)])
 		print('Expected empty diff:<diff>{}</diff>'.format(diff))
 		self.assertFalse(diff)
 
 	def test_non_existent_file(self):
 		with self.assertRaises(FileNotFoundError):
-			self.run_with_files(['test/Changelog_{}.md'.format(n + 1) for n in range(0, 4)])
+			self.run_with_files(['test/Changelog_{}.md'.format(n + 1) for n in range(4)])
 
 if __name__ == '__main__':
 	unittest.main()
