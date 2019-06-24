@@ -12,7 +12,7 @@ class TestMerge(unittest.TestCase):
 			cls.expectation = file.read().splitlines(True)
 
 	@classmethod
-	def run_with_files(cls, *input_files_paths):
+	def run_with_files(cls, input_files_paths):
 		"""
 		Returns:
 			str: Diff between merge (of files in input_files_paths) result and expectation;
@@ -23,14 +23,19 @@ class TestMerge(unittest.TestCase):
 		merge_changelogs(output, input_files_paths)
 		return ''.join(difflib.unified_diff(output.getvalue().splitlines(True), cls.expectation))
 
+
+	def test_fail_merge(self):
+		diff = self.run_with_files(['test/Changelog_{}.md'.format(n + 1) for n in range(0, 2)])
+		self.assertTrue(diff)
+
 	def test_succesfully_merge(self):
-		diff = self.run_with_files('test/Changelog_1.md', 'test/Changelog_2.md', 'test/Changelog_3.md')
+		diff = self.run_with_files(['test/Changelog_{}.md'.format(n + 1) for n in range(0, 3)])
 		print('Expected empty diff:<diff>{}</diff>'.format(diff))
 		self.assertFalse(diff)
 
-	def test_fail_merge(self):
-		diff = self.run_with_files('test/Changelog_1.md', 'test/Changelog_2.md')
-		self.assertTrue(diff)
+	def test_non_existent_file(self):
+		with self.assertRaises(FileNotFoundError):
+			self.run_with_files(['test/Changelog_{}.md'.format(n + 1) for n in range(0, 4)])
 
 if __name__ == '__main__':
 	unittest.main()
