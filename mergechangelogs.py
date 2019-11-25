@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
+""" See README.md """
 
 import argparse
 import sys
 
 def merge_changelogs(output, input_files_paths):
+	""" Merges input_files_paths to output object (object must have write() method)"""
+
 	content_without_chapter = []
 	chapters = {}
 
@@ -26,7 +29,7 @@ def merge_changelogs(output, input_files_paths):
 		for line in chapters[chapter_content]:
 			output.write(line)
 
-if __name__ == '__main__':
+def __main():
 	output = sys.stdout
 
 	parser = argparse.ArgumentParser()
@@ -36,8 +39,8 @@ if __name__ == '__main__':
 
 	if args.readme:
 		output.write('# mergechangelogs.py\nFor example, we have Changelog files:')
-		for n, file_name in enumerate(args.input_files_paths):
-			output.write('\n* File #{} ({}):\n```markdown\n'.format(n + 1, file_name))
+		for i, file_name in enumerate(args.input_files_paths):
+			output.write('\n* File #{} ({}):\n```markdown\n'.format(i + 1, file_name))
 			with open(file_name) as file:
 				output.write(file.read())
 			output.write('```')
@@ -47,3 +50,7 @@ if __name__ == '__main__':
 
 	if args.readme:
 		output.write('```\n_File was generated with:_\n```{}```'.format(" ".join(sys.argv)))
+
+if __name__ == '__main__':
+	__main()
+
