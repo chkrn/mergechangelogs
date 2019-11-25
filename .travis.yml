@@ -2,4 +2,8 @@ language: python
 python:
   - "3.5"
   - "3.6"
+before_install:
+  - sudo apt-get install --yes --no-install-recommends pylint3
+script: pylint3 mergechangelogs.py
 script: python3 run_tests.py
+
