@@ -5,7 +5,8 @@ python:
 before_install:
   - sudo apt-get install --yes --no-install-recommends pylint3
 env:
-- SCRIPT_TO_RUN="pylint3 mergechangelogs.py"
 - SCRIPT_TO_RUN="python3 run_tests.py"
+- SCRIPT_TO_RUN="pylint3 mergechangelogs.py"
+- SCRIPT_TO_RUN="pylint3 --disable=missing-docstring run_tests.py"
 script: ${SCRIPT_TO_RUN}
 
